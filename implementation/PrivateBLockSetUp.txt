@@ -1,0 +1,46 @@
+Setting up a private blockchain
+
+Pre-requisires
+
+-> Install geth
+-> Install web3
+-> make a directory in windows:
+local drive C -> dev -> ethereum -> (install geth in this directory with the folder name geth-tools)
+and
+local drive C -> dev -> ethereum -> geth -> data ->(make 2 folders "00" and "01")
+
+1 copy the genisis file in the "00" folder
+
+2 open the command prompt
+
+3 run the following commands
+
+4 geth --datadir "C:\dev\ethereum\geth\data\01" init "C:\dev\ethereum\geth\data\00\DefaultGenesis.json"
+
+5 geth --datadir "C:\dev\ethereum\geth\data\01" --ipcpath geth01 --nodiscover --networkid 1234  --rpcapi="db,eth,net,web3,personal,web3" --rpc --rpccorsdomain "*" --allow-insecure-unlock console 2> "C:\dev\ethereum\geth\data\01\console.log"
+
+
+6 make a new account on this node using the command 
+
+> personal.newAccount(<".....you password here.....">)
+"0x4799c873f6574b299854bfd831ae99ad2e664e30"
+
+7 start mining
+
+>miner.start()
+>eth.Blocknumber()
+>eth.hashrate
+
+//the hashrate command should return a value>0 , and the Blocknumber should keep increasing with time
+
+>eth.getBalance(eth.accounts[0])
+
+if the balance is greater than 0, move to step 8.
+Otherwise, there mush have been a problem during the set-up
+
+8. run the contract.py script
+-> you will have to change the CSV file path for running the script.
+
+9. stop mining using this command
+
+>mining.stop() 
